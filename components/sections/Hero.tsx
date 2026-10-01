@@ -1,95 +1,82 @@
 import Image from "next/image";
-import { ButtonLink } from "@/components/ButtonLink";
-import { Eyebrow } from "@/components/Eyebrow";
-import { Icon } from "@/components/Icon";
+import { ArrowIcon, ButtonLink } from "@/components/ButtonLink";
 import { BOOKING_URL } from "@/lib/config";
 
-const SPECS = [
-  { label: "Guaranteed inflow", value: "30–50 /mo", highlight: true },
-  { label: "Min. project floor", value: "$150k+" },
-  { label: "Deployment matrix", value: "Meta • Google P-Max", small: true },
-  { label: "Dispatch latency", value: "<60s CRM Sync", highlight: true },
-];
+// Placeholder image. Replace /public/images/project-living-room.png with a real,
+// wide project photo from the studio's portfolio and update the alt text to match.
+const HERO_IMAGE = {
+  src: "/images/project-living-room.png",
+  alt: "Living room with a linen sofa, oak joinery and a travertine coffee table",
+};
+
+const SERVICES = ["Meta ads", "Google ads", "Enquiry funnels", "CRM automation", "Reels & creative"];
 
 export function Hero() {
   return (
-    <section className="bg-surface pb-16 pt-8 lg:pb-24 lg:pt-20">
-      <div className="container-content grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
-        <div>
-          <Eyebrow>Architectural growth protocol</Eyebrow>
-          <h1 className="heading-1 mt-4">
-            Engineered client acquisition for interior architects &amp; design studios.
-          </h1>
-          <p className="mt-4 max-w-[560px] text-[16px] leading-[26px] text-ink-muted lg:text-[18px] lg:leading-[30px]">
-            We build systems for interior designers that generate 30–50 qualified leads every single
-            month via paid ads.
-          </p>
-          <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:gap-3">
-            <ButtonLink href={BOOKING_URL} variant="primary">
-              Book strategy &amp; audit call
+    <section className="on-dark panel relative mt-1 bg-ink text-paper">
+      <Image
+        src={HERO_IMAGE.src}
+        alt={HERO_IMAGE.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20" />
+
+      <RotatingBadge />
+
+      <div className="container-content relative flex min-h-[620px] flex-col justify-end pb-10 pt-28 sm:min-h-[700px] lg:min-h-[780px] lg:pb-14">
+        <p className="eyebrow text-brass">Client acquisition for interior designers</p>
+        <h1 className="heading-hero mt-6 max-w-[1000px]">
+          More qualified project enquiries <em>for interior design studios.</em>
+        </h1>
+
+        <div className="mt-10 grid gap-8 border-t border-paper/20 pt-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p className="max-w-[560px] text-lg leading-relaxed text-paper/80">
+              We run your Meta and Google ads, build the enquiry funnel and set up the CRM, so
+              homeowners with a real budget and timeline end up booked in for a consultation.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2" aria-label="Services">
+              {SERVICES.map((s) => (
+                <li key={s} className="pill border-paper/25 bg-paper/10 text-paper backdrop-blur-sm">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href={BOOKING_URL} variant="accent">
+              Book a strategy call
             </ButtonLink>
-            <ButtonLink href="#stack" variant="secondary">
-              Explore pipeline architecture
+            <ButtonLink href="#pricing" variant="light">
+              View pricing
             </ButtonLink>
           </div>
         </div>
-
-        <HudCard />
       </div>
     </section>
   );
 }
 
-/** Studio photo with a live-pipeline dashboard underneath */
-function HudCard() {
+/** Circular "book a call" badge with slowly rotating text */
+function RotatingBadge() {
   return (
-    <div className="w-full overflow-hidden bg-surface-lowest shadow-card">
-      <div className="relative h-64 bg-surface-high lg:h-72">
-        <Image
-          src="/figma/hero-studio.jpg"
-          alt="Interior design studio with a moody, warmly lit living space"
-          fill
-          priority
-          sizes="(min-width: 1024px) 560px, 100vw"
-          className="object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-surface-lowest via-surface-lowest/40 to-surface-lowest/0" />
-        <p className="absolute left-2 top-2 flex items-center gap-1 bg-surface-lowest/90 px-2 py-1 text-[12px] font-bold uppercase leading-4 tracking-[0.1em] text-gold backdrop-blur-[6px]">
-          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-gold motion-safe:animate-pulse" />
-          Real-time feed
-        </p>
-      </div>
-
-      <div className="flex flex-col gap-4 p-4">
-        <div className="flex items-center justify-between bg-surface-high p-2">
-          <p className="flex items-center gap-1 text-[12px] font-semibold uppercase leading-4 tracking-[0.05em] text-ink">
-            <Icon src="/figma/pipeline-status.svg" width={11.667} height={11.667} />
-            Live pipeline status
-          </p>
-          <p className="text-[12px] font-bold leading-4 tracking-[0.12em] text-gold">Q3 ACTIVE</p>
-        </div>
-
-        <p className="font-display text-[18px] font-bold uppercase leading-6 tracking-[0.025em]">
-          42 private villa inquiries booked this month
-        </p>
-
-        <dl className="grid grid-cols-2 gap-1">
-          {SPECS.map((spec) => (
-            <div key={spec.label} className="bg-surface-low p-2">
-              <dt className="label">{spec.label}</dt>
-              <dd
-                className={`pt-0.5 ${
-                  spec.small
-                    ? "text-[14px] font-medium leading-[22.4px] tracking-[0.01em] text-ink-muted"
-                    : `font-display text-[18px] font-bold leading-6 ${spec.highlight ? "text-gold" : "text-ink"}`
-                }`}
-              >
-                {spec.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
+    <a
+      href={BOOKING_URL}
+      aria-label="Book a strategy call"
+      className="group absolute right-6 top-6 z-10 hidden h-[132px] w-[132px] items-center justify-center rounded-full bg-paper text-ink transition-colors hover:bg-accent hover:text-white md:flex lg:right-10 lg:top-10"
+    >
+      <svg viewBox="0 0 120 120" aria-hidden="true" className="absolute inset-0 h-full w-full animate-spin-slow motion-reduce:animate-none">
+        <defs>
+          <path id="badge-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
+        </defs>
+        <text className="fill-current font-sans text-[10.5px] font-medium uppercase tracking-[0.32em]">
+          <textPath href="#badge-circle">Book a strategy call • Book a call •</textPath>
+        </text>
+      </svg>
+      <ArrowIcon className="h-6 w-6 transition-transform duration-300 group-hover:rotate-45" />
+    </a>
   );
 }

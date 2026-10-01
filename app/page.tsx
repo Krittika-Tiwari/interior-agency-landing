@@ -1,25 +1,31 @@
+import { Faq } from "@/components/sections/Faq";
+import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
+import { GrowthStack } from "@/components/sections/GrowthStack";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
-import { IntakeForm } from "@/components/sections/IntakeForm";
-import { Metrics } from "@/components/sections/Metrics";
-import { MobileNav } from "@/components/sections/MobileNav";
-import { Phases } from "@/components/sections/Phases";
-import { Stack } from "@/components/sections/Stack";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Marquee } from "@/components/sections/Marquee";
+import { Pricing } from "@/components/sections/Pricing";
+import { Results } from "@/components/sections/Results";
+import { WhoWeWorkWith } from "@/components/sections/WhoWeWorkWith";
 
 export default function Home() {
   return (
-    <div id="top" className="pb-20 md:pb-0">
+    <div id="top">
       <Header />
-      <main className="pt-16">
+      <main>
         <Hero />
-        <Stack />
-        <Phases />
-        <Metrics />
-        <IntakeForm />
+        <Marquee />
+        <WhoWeWorkWith />
+        <GrowthStack />
+        <HowItWorks />
+        <Pricing />
+        <Results />
+        <Faq />
+        <FinalCta />
       </main>
       <Footer />
-      <MobileNav />
     </div>
   );
 }

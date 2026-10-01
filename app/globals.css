@@ -14,21 +14,25 @@
   }
 
   body {
-    @apply bg-surface font-sans text-ink antialiased;
+    @apply bg-paper font-sans text-ink antialiased;
   }
 
-  /* Keep anchored sections clear of the fixed header */
+  /* Keep anchored sections clear of the sticky header */
   section[id] {
-    scroll-margin-top: 64px;
+    scroll-margin-top: 72px;
   }
 
   ::selection {
-    @apply bg-gold text-gold-on;
+    @apply bg-accent text-white;
   }
 
   :focus-visible {
-    outline: 2px solid theme("colors.gold.DEFAULT");
+    outline: 2px solid theme("colors.accent");
     outline-offset: 3px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: theme("colors.paper");
   }
 }
 
@@ -38,27 +42,48 @@
   }
 
   .section-pad {
-    @apply py-16 lg:py-24;
+    @apply py-16 md:py-[100px];
   }
 
-  .heading-1 {
-    @apply font-display text-[32px] font-bold uppercase leading-[36px] tracking-[-0.025em] sm:text-[44px] sm:leading-[48px] lg:text-[56px] lg:leading-[60px];
+  /* Inset rounded block that sits inside the page margin */
+  .panel {
+    @apply mx-3 overflow-hidden rounded-panel sm:mx-4;
   }
 
-  .heading-2 {
-    @apply font-display text-[24px] font-bold uppercase leading-[32px] tracking-[-0.025em] lg:text-[36px] lg:leading-[42px];
+  .pill {
+    @apply inline-flex items-center rounded-full border px-4 py-1.5 text-[13px] font-medium;
   }
 
-  .heading-3 {
-    @apply font-display text-[18px] font-bold uppercase leading-6;
+  /* Short rule before every section label */
+  .eyebrow {
+    @apply flex items-center gap-3 text-[12px] font-medium uppercase tracking-[0.22em] text-accent;
   }
 
-  /* Small caps label used for stats and field names */
-  .label {
-    @apply text-[12px] font-semibold uppercase leading-4 tracking-[0.12em] text-ink-faint;
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 shrink-0 bg-current;
   }
 
-  .body-sm {
-    @apply text-[14px] leading-[22.75px] tracking-[0.01em] text-ink-muted;
+  .heading-xl {
+    @apply font-display text-[42px] font-medium leading-[1.04] tracking-[-0.01em] sm:text-[56px] lg:text-[68px];
+  }
+
+  .heading-lg {
+    @apply font-display text-[34px] font-medium leading-[1.1] tracking-[-0.01em] md:text-[48px];
+  }
+
+  /* Italic accent words inside display headings */
+  .heading-xl em,
+  .heading-lg em {
+    @apply italic text-accent;
+  }
+
+  .heading-hero {
+    @apply font-display text-[46px] font-medium leading-[0.98] tracking-[-0.015em] sm:text-[68px] lg:text-[96px];
+  }
+
+  .heading-hero em,
+  .on-dark .heading-lg em {
+    @apply text-brass;
   }
 }

@@ -1,35 +1,43 @@
 import type { Config } from "tailwindcss";
 
+// Tokens from the WEBSPHERX Figma design (dark surfaces + gold accent)
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        paper: "#F3F3EF", // page background
-        "paper-alt": "#E8E8E2", // alternate sections
-        card: "#FBFBF8",
-        ink: "#0C0C14", // primary text, dark sections
-        "ink-muted": "#4A4A57", // secondary text
-        line: "#D3D3CB", // borders on light
-        "dark-muted": "#A8A8B8", // secondary text on dark
-        "dark-line": "#2A2A38", // borders on dark
-        accent: "#2B3BFF", // cobalt
-        "accent-deep": "#1A27C9", // accent hover
+        surface: {
+          lowest: "#0E0E10",
+          DEFAULT: "#131315",
+          low: "#1B1B1D",
+          high: "#201F21",
+          highest: "#2A2A2C",
+        },
+        ink: {
+          DEFAULT: "#E5E1E4", // primary text
+          muted: "#D1C5B4", // body copy
+          faint: "#9A8F80", // labels
+          ghost: "#4E4639", // input placeholders
+        },
+        gold: {
+          DEFAULT: "#E9C176",
+          deep: "#C5A059",
+          on: "#412D00", // text on gold
+          "on-deep": "#4E3700", // text on deep gold
+        },
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         content: "1240px",
       },
-      borderRadius: {
-        btn: "999px",
-        tile: "20px",
-      },
-      minHeight: {
-        btn: "52px",
+      boxShadow: {
+        btn: "0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -2px rgba(0,0,0,0.1)",
+        card: "0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)",
+        header: "0px 1px 8px 0px rgba(0,0,0,0.4)",
+        nav: "0px -4px 16px 0px rgba(0,0,0,0.5)",
       },
     },
   },

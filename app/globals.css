@@ -14,25 +14,21 @@
   }
 
   body {
-    @apply bg-paper font-sans text-ink antialiased;
+    @apply bg-surface font-sans text-ink antialiased;
   }
 
-  /* Keep anchored sections clear of the sticky header */
+  /* Keep anchored sections clear of the fixed header */
   section[id] {
-    scroll-margin-top: 72px;
+    scroll-margin-top: 64px;
   }
 
   ::selection {
-    @apply bg-accent text-white;
+    @apply bg-gold text-gold-on;
   }
 
   :focus-visible {
-    outline: 2px solid theme("colors.accent");
+    outline: 2px solid theme("colors.gold.DEFAULT");
     outline-offset: 3px;
-  }
-
-  .on-dark :focus-visible {
-    outline-color: theme("colors.paper");
   }
 }
 
@@ -42,35 +38,27 @@
   }
 
   .section-pad {
-    @apply py-16 md:py-[100px];
+    @apply py-16 lg:py-24;
   }
 
-  /* Small sphere marker before every section label */
-  .eyebrow {
-    @apply inline-flex items-center gap-2.5 text-[12px] font-bold uppercase tracking-[0.16em] text-accent;
+  .heading-1 {
+    @apply font-display text-[32px] font-bold uppercase leading-[36px] tracking-[-0.025em] sm:text-[44px] sm:leading-[48px] lg:text-[56px] lg:leading-[60px];
   }
 
-  .eyebrow::before {
-    content: "";
-    @apply h-2 w-2 shrink-0 rounded-full bg-current;
+  .heading-2 {
+    @apply font-display text-[24px] font-bold uppercase leading-[32px] tracking-[-0.025em] lg:text-[36px] lg:leading-[42px];
   }
 
-  .heading-xl {
-    @apply font-display text-[34px] font-medium leading-[1.08] tracking-[-0.03em] sm:text-[46px] lg:text-[56px];
+  .heading-3 {
+    @apply font-display text-[18px] font-bold uppercase leading-6;
   }
 
-  .heading-lg {
-    @apply font-display text-[28px] font-medium leading-[1.12] tracking-[-0.025em] md:text-[40px];
+  /* Small caps label used for stats and field names */
+  .label {
+    @apply text-[12px] font-semibold uppercase leading-4 tracking-[0.12em] text-ink-faint;
   }
 
-  /* Italic serif accent words inside display headings */
-  .heading-xl em,
-  .heading-lg em {
-    @apply font-serif font-normal italic tracking-normal text-accent;
-    font-size: 1.12em;
-  }
-
-  .on-dark .heading-lg em {
-    @apply text-white;
+  .body-sm {
+    @apply text-[14px] leading-[22.75px] tracking-[0.01em] text-ink-muted;
   }
 }

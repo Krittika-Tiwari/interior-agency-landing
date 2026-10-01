@@ -1,31 +1,24 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope, Unbounded } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import { SITE_NAME } from "@/lib/config";
 import "./globals.css";
 
-const display = Unbounded({
+const display = Syne({
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
-const serif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const sans = Manrope({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const title = `${SITE_NAME} | Client acquisition for interior designers`;
+const title = `${SITE_NAME} | Engineered client acquisition for interior design studios`;
 const description =
-  "We run Meta and Google ads, build the enquiry funnel and set up the CRM for interior design studios, so homeowners with a real budget and timeline get booked in for a consultation.";
+  "Paid ads, qualification funnels and CRM automation that bring interior architects and design studios a steady flow of qualified project enquiries.";
 
 export const metadata: Metadata = {
   title,
@@ -50,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>{children}</body>
     </html>
   );

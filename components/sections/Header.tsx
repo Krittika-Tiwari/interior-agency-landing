@@ -18,20 +18,17 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/80 backdrop-blur-md">
-      <div className="container-content flex h-[76px] items-center justify-between gap-6">
-        <a href="#top" aria-label={`${SITE_NAME} home`} className="text-[15px] leading-none sm:text-base">
+    <header className="sticky top-0 z-50 border-b border-line/60 bg-paper/90 backdrop-blur-md">
+      <div className="container-content flex h-20 items-center justify-between gap-6">
+        <a href="#top" aria-label={`${SITE_NAME} home`} className="text-[14px] leading-none">
           <Logo />
         </a>
 
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-1 rounded-full border border-line bg-card/70 p-1.5">
+          <ul className="flex items-center gap-10">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block rounded-full px-4 py-2 text-[15px] font-medium text-ink-muted transition-colors hover:bg-paper-alt hover:text-ink"
-                >
+                <a href={link.href} className="text-[15px] text-ink-muted transition-colors hover:text-ink">
                   {link.label}
                 </a>
               </li>
@@ -39,38 +36,39 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden lg:block">
-          <ButtonLink href={BOOKING_URL} variant="solid">
-            Book a call
-          </ButtonLink>
-        </div>
+        <a
+          href={BOOKING_URL}
+          className="hidden text-[15px] font-medium text-ink transition-colors hover:text-accent lg:block"
+        >
+          Book a call
+        </a>
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-card lg:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
             {open ? (
-              <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" strokeWidth="1.25" />
             ) : (
-              <path d="M3 7h14M3 13h14" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M3 8h16M3 14h16" stroke="currentColor" strokeWidth="1.25" />
             )}
           </svg>
         </button>
       </div>
 
-      <div id="mobile-menu" hidden={!open} className="border-t border-line lg:hidden">
-        <nav aria-label="Mobile" className="container-content py-6">
-          <ul className="flex flex-col">
+      <div id="mobile-menu" hidden={!open} className="lg:hidden">
+        <nav aria-label="Mobile" className="container-content pb-10 pt-4">
+          <ul className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
-              <li key={link.href} className="border-b border-line">
+              <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block py-4 font-display text-[28px] font-medium"
+                  className="block py-3 text-[32px] font-light tracking-[-0.03em]"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -78,7 +76,7 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <ButtonLink href={BOOKING_URL} variant="accent" className="mt-6 w-full">
+          <ButtonLink href={BOOKING_URL} className="mt-8">
             Book a strategy call
           </ButtonLink>
         </nav>

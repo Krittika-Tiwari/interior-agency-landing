@@ -23,20 +23,22 @@ export function Faq() {
   };
 
   return (
-    <section id="faqs" className="section-pad">
-      <div className="container-content grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16">
+    <section id="faqs" className="section-pad bg-paper-alt">
+      <div className="container-content grid gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-24">
         <div>
           <p className="eyebrow">FAQs</p>
-          <h2 className="heading-lg mt-6">Questions studios ask <em>before they book.</em></h2>
+          <h2 className="heading-lg mt-8">
+            Questions studios ask <em>before they book.</em>
+          </h2>
         </div>
 
-        <div className="space-y-3">
+        <div className="border-t border-line">
           {FAQS.map((faq, i) => {
             const isOpen = openIndex === i;
             const buttonId = `faq-button-${i}`;
             const panelId = `faq-panel-${i}`;
             return (
-              <div key={faq.question} className="rounded-tile border border-line bg-card px-6 md:px-8">
+              <div key={faq.question} className="border-b border-line">
                 <h3>
                   <button
                     ref={(el) => {
@@ -48,23 +50,16 @@ export function Faq() {
                     aria-controls={panelId}
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     onKeyDown={(e) => onKeyDown(e, i)}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left text-lg font-semibold"
+                    className="flex w-full items-center justify-between gap-8 py-7 text-left text-lg tracking-[-0.01em]"
                   >
                     {faq.question}
-                    <span
-                      aria-hidden="true"
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${
-                        isOpen ? "bg-accent text-white" : "bg-paper-alt text-ink"
-                      }`}
-                    >
-                      <span className="relative h-3.5 w-3.5">
-                        <span className="absolute left-0 top-1/2 h-px w-3.5 bg-current" />
-                        <span
-                          className={`absolute left-1/2 top-0 h-3.5 w-px bg-current transition-transform duration-300 motion-reduce:transition-none ${
-                            isOpen ? "scale-y-0" : ""
-                          }`}
-                        />
-                      </span>
+                    <span aria-hidden="true" className="relative h-3 w-3 shrink-0 text-ink-muted">
+                      <span className="absolute left-0 top-1/2 h-px w-3 bg-current" />
+                      <span
+                        className={`absolute left-1/2 top-0 h-3 w-px bg-current transition-transform duration-300 motion-reduce:transition-none ${
+                          isOpen ? "scale-y-0" : ""
+                        }`}
+                      />
                     </span>
                   </button>
                 </h3>
@@ -78,7 +73,7 @@ export function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-[640px] pb-6 leading-relaxed text-ink-muted">{faq.answer}</p>
+                    <p className="max-w-[620px] pb-8 leading-relaxed text-ink-muted">{faq.answer}</p>
                   </div>
                 </div>
               </div>

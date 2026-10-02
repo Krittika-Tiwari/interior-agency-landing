@@ -23,21 +23,18 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="process" className="panel section-pad bg-paper-alt">
+    <section id="process" className="section-pad">
       <div className="container-content">
         <p className="eyebrow">How it works</p>
-        <h2 className="heading-lg mt-6 max-w-[900px]">From first call to live campaigns <em>in three weeks.</em></h2>
-        <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((step, i) => (
-            <li key={step.title} className="flex flex-col rounded-tile bg-card p-7">
-              <div className="flex items-center justify-between">
-                <span className="pill border-line text-ink-muted">{step.when}</span>
-                <span aria-hidden="true" className="font-display text-[40px] font-medium italic leading-none text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 className="mt-12 font-display text-[28px] font-semibold leading-tight">{step.title}</h3>
-              <p className="mt-3 leading-relaxed text-ink-muted">{step.body}</p>
+        <h2 className="heading-lg mt-8 max-w-[900px]">
+          From first call to live campaigns <em>in three weeks.</em>
+        </h2>
+        <ol className="mt-20 grid gap-16 sm:grid-cols-2 md:mt-28 lg:grid-cols-4 lg:gap-12">
+          {STEPS.map((step) => (
+            <li key={step.title}>
+              <p className="text-[13px] text-ink-muted">{step.when}</p>
+              <h3 className="heading-sm mt-6">{step.title}</h3>
+              <p className="mt-4 leading-relaxed text-ink-muted">{step.body}</p>
             </li>
           ))}
         </ol>

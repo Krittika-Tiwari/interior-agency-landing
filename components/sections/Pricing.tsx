@@ -4,50 +4,41 @@ import { PLANS } from "@/lib/pricing";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="section-pad">
+    <section id="pricing" className="section-pad bg-paper-alt">
       <div className="container-content">
         <p className="eyebrow">Pricing</p>
-        <h2 className="heading-lg mt-6 max-w-[900px]">Two plans. <em>Both run for three months.</em></h2>
-        <p className="mt-4 text-ink-muted">Ad spend is paid directly to Meta and Google and is not included.</p>
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <h2 className="heading-lg mt-8 max-w-[900px]">
+          Two plans. <em>Both run for three months.</em>
+        </h2>
+        <p className="mt-6 text-ink-muted">Ad spend is paid directly to Meta and Google and is not included.</p>
+
+        <div className="mt-20 grid gap-20 md:mt-28 md:grid-cols-2 md:gap-16 lg:gap-24">
           {PLANS.map((plan) => {
-            const dark = plan.theme === "dark";
+            const featured = plan.theme === "dark";
             return (
-              <article
-                key={plan.name}
-                className={`flex flex-col rounded-panel border p-8 md:p-10 ${
-                  dark ? "on-dark border-ink bg-ink text-paper" : "border-line bg-card"
-                }`}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="font-display text-[32px] font-semibold leading-tight">{plan.name}</h3>
-                  {dark && <span className="pill border-brass text-brass">Full system</span>}
+              <article key={plan.name} className="flex flex-col border-t border-ink pt-10">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="heading-sm">{plan.name}</h3>
+                  {featured && (
+                    <p className="text-[13px] font-medium uppercase tracking-[0.18em] text-accent">Full system</p>
+                  )}
                 </div>
-                <p className="mt-4">
-                  <span className="font-display text-[48px] font-medium italic leading-none">{plan.price}</span>{" "}
-                  <span className={dark ? "text-dark-muted" : "text-ink-muted"}>/ {plan.period}</span>
+                <p className="mt-6">
+                  <span className="text-[48px] font-light leading-none tracking-[-0.03em]">{plan.price}</span>{" "}
+                  <span className="text-ink-muted">/ {plan.period}</span>
                 </p>
-                <div className={`mt-8 flex-1 border-t pt-8 ${dark ? "border-dark-line" : "border-line"}`}>
-                  {plan.intro && <p className="mb-4 font-semibold">{plan.intro}</p>}
-                  <ul className={`space-y-3 ${dark ? "text-dark-muted" : "text-ink-muted"}`}>
+                <div className="mt-10 flex-1">
+                  {plan.intro && <p className="mb-4 font-medium">{plan.intro}</p>}
+                  <ul className="space-y-3 leading-relaxed text-ink-muted">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex gap-3 leading-relaxed">
-                        <svg
-                          aria-hidden="true"
-                          viewBox="0 0 16 16"
-                          className={`mt-[5px] h-4 w-4 shrink-0 ${dark ? "text-brass" : "text-accent"}`}
-                        >
-                          <path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                        </svg>
-                        {feature}
-                      </li>
+                      <li key={feature}>{feature}</li>
                     ))}
                   </ul>
                 </div>
                 <ButtonLink
                   href={BOOKING_URL}
-                  variant={dark ? "light" : "outline"}
-                  className="mt-10 w-full"
+                  variant={featured ? "primary" : "text"}
+                  className="mt-10 self-start"
                 >
                   Book a strategy call
                 </ButtonLink>

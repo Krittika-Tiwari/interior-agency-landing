@@ -9,24 +9,25 @@ const CONTACT_LINKS = [
 ];
 
 const linkClass = "text-dark-muted transition-colors hover:text-paper";
+const headingClass = "text-[13px] font-medium uppercase tracking-[0.18em] text-dark-muted";
 
 export function Footer() {
   return (
-    <footer className="on-dark panel mb-3 mt-3 bg-ink pb-8 pt-16 text-paper sm:mb-4 sm:mt-4 md:pt-[100px]">
+    <footer className="on-dark bg-ink pb-10 pt-24 text-paper md:pt-32">
       <div className="container-content">
-        <div className="grid gap-12 md:grid-cols-[2fr_1fr_1fr]">
+        <div className="grid gap-16 md:grid-cols-[2fr_1fr_1fr]">
           <div>
-            <a href="#top" aria-label={`${SITE_NAME} home`} className="text-lg leading-none">
+            <a href="#top" aria-label={`${SITE_NAME} home`} className="text-[14px] leading-none">
               <Logo />
             </a>
-            <p className="mt-4 max-w-[360px] leading-relaxed text-dark-muted">
+            <p className="mt-6 max-w-[360px] leading-relaxed text-dark-muted">
               Paid ads, enquiry funnels and CRM automation for interior design studios.
             </p>
           </div>
 
           <nav aria-label="Footer">
-            <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-dark-muted">Menu</h2>
-            <ul className="mt-5 space-y-3">
+            <h2 className={headingClass}>Menu</h2>
+            <ul className="mt-6 space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className={linkClass}>
@@ -38,8 +39,8 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-[13px] font-bold uppercase tracking-[0.14em] text-dark-muted">Contact</h2>
-            <ul className="mt-5 space-y-3">
+            <h2 className={headingClass}>Contact</h2>
+            <ul className="mt-6 space-y-3">
               {CONTACT_LINKS.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className={linkClass}>
@@ -51,18 +52,11 @@ export function Footer() {
           </div>
         </div>
 
-        <p
-          aria-hidden="true"
-          className="mt-16 select-none text-center font-sans text-[16.5vw] font-medium uppercase leading-[0.8] tracking-[-0.04em] text-white/[0.06] lg:text-[205px]"
-        >
-          Webspher<span className="text-accent/60">x</span>
-        </p>
-
-        <div className="mt-10 flex flex-col gap-4 border-t border-dark-line pt-8 text-sm text-dark-muted sm:flex-row sm:justify-between">
+        <div className="mt-24 flex flex-col gap-4 border-t border-dark-line pt-8 text-sm text-dark-muted sm:flex-row sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
           </p>
-          <ul className="flex gap-6">
+          <ul className="flex gap-8">
             <li>
               <a href="[PRIVACY_POLICY_URL]" className={linkClass}>
                 Privacy Policy

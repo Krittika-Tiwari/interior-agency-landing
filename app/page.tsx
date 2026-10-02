@@ -5,7 +5,7 @@ import { GrowthStack } from "@/components/sections/GrowthStack";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Marquee } from "@/components/sections/Marquee";
+import { Platforms } from "@/components/sections/Platforms";
 import { Pricing } from "@/components/sections/Pricing";
 import { Results } from "@/components/sections/Results";
 import { WhoWeWorkWith } from "@/components/sections/WhoWeWorkWith";
@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Marquee />
+        <Platforms />
         <WhoWeWorkWith />
         <GrowthStack />
         <HowItWorks />

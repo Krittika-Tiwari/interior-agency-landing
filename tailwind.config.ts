@@ -18,28 +18,13 @@ const config: Config = {
         brass: "#C9A46A", // highlights on dark
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         content: "1240px",
       },
-      borderRadius: {
-        tile: "20px",
-        panel: "32px",
-      },
       minHeight: {
         btn: "52px",
-      },
-      keyframes: {
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-50%)" },
-        },
-      },
-      animation: {
-        marquee: "marquee 40s linear infinite",
-        "spin-slow": "spin 18s linear infinite",
       },
     },
   },
